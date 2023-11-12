@@ -33,4 +33,4 @@ speed_perturb_factors="0.9 1.0 1.1"
     --valid_set "train_dev" \
     --test_sets "train_dev test" \
     --bpe_train_text "dump/raw/train_nodev_sp/text" \
-    --lm_train_text "data/train_nodev_sp/tex" "$@"
+    --lm_train_text "data/train_nodev_sp/text" "$@"
