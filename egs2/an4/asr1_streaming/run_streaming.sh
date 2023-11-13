@@ -22,7 +22,6 @@ speed_perturb_factors="0.9 1.0 1.1"
     --audio_format flac \
     --feats_type raw \
     --token_type bpe \
-    --nbpe 139 \
     --use_lm ${use_lm} \
     --use_word_lm ${use_wordlm} \
     --asr_config "${asr_config}" \
@@ -34,3 +33,4 @@ speed_perturb_factors="0.9 1.0 1.1"
     --test_sets "train_dev test" \
     --bpe_train_text "dump/raw/train_nodev_sp/text" \
     --lm_train_text "data/train_nodev_sp/text" "$@"
+    # --nbpe 139 \

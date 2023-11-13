@@ -16,3 +16,4 @@ set -o pipefail
     --test_sets "train_dev test" \
     --bpe_train_text "dump/raw/train_nodev_sp/text" \
     --lm_train_text "data/train_nodev_sp/text" "$@"
+    # sao ở đây ko có thiết lập nbpe nhờ
