@@ -22,7 +22,7 @@ speed_perturb_factors="0.9 1.0 1.1"
     --audio_format flac \
     --feats_type raw \
     --token_type bpe \
-    --nbpe 500 \
+    --nbpe 139 \
     --use_lm ${use_lm} \
     --use_word_lm ${use_wordlm} \
     --asr_config "${asr_config}" \
