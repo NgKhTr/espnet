@@ -16,7 +16,7 @@ skip_stages=
 cpu_cmd="run.pl"
 num_threads=20      # number of cpu threads in learn_kmeans
 cuda_cmd="run.pl"
-nj=16               # number of parallel jobs
+nj=1           # number of parallel jobs
 python=python3      # Specify python to execute espnet commands.
 train_set=          # Name of training set
 dev_set=            # Name of valid set
@@ -41,7 +41,7 @@ storage_save_mode=false     # Save storage on SSL feature extraction
 feature_conf=       # feature configuration in json string format
 feature_type=mfcc   # mfcc / fairseq_hubert / espnet_hubert
 layer=              # The layer index of SSL models to extract features from.
-batch_bins=         # batch size when extracting features and labels.
+batch_bins=1         # batch size when extracting features and labels.
 
 # Legacy Fairseq HuBERT model and ESPnet-trained HuBERT model related for feature extraction.
 # Example of legacy Fairseq HuBERT model

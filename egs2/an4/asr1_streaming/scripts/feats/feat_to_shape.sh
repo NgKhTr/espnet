@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Begin configuration section.
-nj=4
+nj=1
 cmd=run.pl
 verbose=0
 filetype=""
