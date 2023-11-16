@@ -18,12 +18,13 @@ speed_perturb_factors="0.9 1.0 1.1"
 
 ./asr.sh \
     --use_streaming true \
-    --lang en \
-    --audio_format flac \
+    --lang vi \
+    --audio_format wav \
     --feats_type raw \
-    --token_type bpe \
+    --token_type char \
     --use_lm ${use_lm} \
     --use_word_lm ${use_wordlm} \
+    --word_vocab_size 7184 \
     --asr_config "${asr_config}" \
     --inference_config "${inference_config}" \
     --lm_config "${lm_config}" \
@@ -31,6 +32,5 @@ speed_perturb_factors="0.9 1.0 1.1"
     --train_set "train_nodev" \
     --valid_set "train_dev" \
     --test_sets "train_dev test" \
-    --bpe_train_text "dump/raw/train_nodev_sp/text" \
     --lm_train_text "data/train_nodev_sp/text" "$@"
     # --nbpe 139 \
