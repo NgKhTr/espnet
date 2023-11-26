@@ -7,7 +7,6 @@ set -o pipefail
 
 asr_config=conf/train_asr_streaming_transformer.yaml
 inference_config=conf/decode_asr_streaming.yaml
-bpe_train_text=dump/raw/train_sp/text
 lm_config=conf/train_lm.yaml
 use_lm=true
 use_wordlm=false
@@ -28,9 +27,9 @@ speed_perturb_factors="0.9 1.0 1.1"
     --asr_config "${asr_config}" \
     --inference_config "${inference_config}" \
     --lm_config "${lm_config}" \
-    --speed_perturb_factors "${speed_perturb_factors}" \
     --train_set "train_nodev" \
     --valid_set "train_dev" \
     --test_sets "train_dev test" \
     --lm_train_text "data/train_nodev_sp/text" "$@"
+    # --speed_perturb_factors "${speed_perturb_factors}" \
     # --nbpe 139 \
