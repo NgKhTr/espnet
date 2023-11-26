@@ -30,6 +30,6 @@ speed_perturb_factors="0.9 1.0 1.1"
     --train_set "train_nodev" \
     --valid_set "train_dev" \
     --test_sets "train_dev test" \
-    --lm_train_text "data/train_nodev_sp/text" "$@"
+    --lm_train_text "data/train_nodev/text" "$@"
     # --speed_perturb_factors "${speed_perturb_factors}" \
     # --nbpe 139 \
