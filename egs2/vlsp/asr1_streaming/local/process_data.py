@@ -40,9 +40,9 @@ def process_data(folder_contain, list_utt_id: list):
         lst = list(map(lambda utt_id: f'{utt_id} {speaker_name}\n', list_utt_id))
         file.writelines(lst)
 
-process_data('train', train_utt_id)
-process_data('test', test_utt_id)
-process_data('valid', val_utt_id)
+process_data('train_nodev', train_utt_id)
+process_data('train_dev', test_utt_id)
+process_data('test', val_utt_id)
 
 # with open('data/train/wav.scp', 'r') as file:
 #     print('Train sample amount:', len(file.readlines()))

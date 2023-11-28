@@ -27,7 +27,7 @@ fi
 
 # t o day nha
 log "stage 0: Data preparation"
-mkdir -p data/{train,test,valid}
+mkdir -p data/{train_nodev, train_dev, test}
 python3 local/process_data.py
 
 log "Successfully finished. [elapsed=${SECONDS}s]"
