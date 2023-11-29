@@ -27,6 +27,6 @@ fi
 
 # t o day nha
 log "stage 0: Data preparation"
-!mv -T _data data
+mv -T _data data
 
 log "Successfully finished. [elapsed=${SECONDS}s]"
