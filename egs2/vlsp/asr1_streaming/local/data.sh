@@ -27,7 +27,6 @@ fi
 
 # t o day nha
 log "stage 0: Data preparation"
-mkdir -p data/{train_nodev,train_dev,test}
-python3 local/process_data.py
+!mv -T _data data
 
 log "Successfully finished. [elapsed=${SECONDS}s]"
