@@ -107,7 +107,7 @@ if [ -n "${segments}" ]; then
     # shellcheck disable=SC2046
     # thêm mem ở đây
     # thêm gpu ở đây luôn
-    ${cmd} --gpu 2 --mem "10G" "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
+    ${cmd} --gpu 2 --mem "20G" "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
         pyscripts/audio/format_wav_scp.py \
             ${opts} \
             --fs ${fs} \
@@ -129,7 +129,7 @@ else
     utils/split_scp.pl "${scp}" ${split_scps}
     # shellcheck disable=SC2046
     # và thêm mem ở đây
-    ${cmd} --gpu 2 --mem "10G" "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
+    ${cmd} --gpu 2 --mem "20G" "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
         pyscripts/audio/format_wav_scp.py \
         ${opts} \
         --fs "${fs}" \
