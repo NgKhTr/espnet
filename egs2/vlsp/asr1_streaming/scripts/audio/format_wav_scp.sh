@@ -105,7 +105,8 @@ if [ -n "${segments}" ]; then
     utils/split_scp.pl "${segments}" ${split_segments}
 
     # shellcheck disable=SC2046
-    ${cmd} "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
+    # thêm mem ở đây
+    ${cmd} --mem "10G" "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
         pyscripts/audio/format_wav_scp.py \
             ${opts} \
             --fs ${fs} \
@@ -126,7 +127,8 @@ else
 
     utils/split_scp.pl "${scp}" ${split_scps}
     # shellcheck disable=SC2046
-    ${cmd} "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
+    # và thêm mem ở đây
+    ${cmd} --mem "10G" "JOB=1:${nj}" "${logdir}/format_wav_scp.JOB.log" \
         pyscripts/audio/format_wav_scp.py \
         ${opts} \
         --fs "${fs}" \
