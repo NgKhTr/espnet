@@ -36,7 +36,7 @@ eval_valid_set=false # Run decoding for the validation set
 ngpu=2               # The number of gpus ("0" uses cpu, otherwise use gpu).
 num_nodes=1          # The number of nodes.
 nj=1                 # The number of parallel jobs.
-inference_nj=1      # The number of parallel jobs in decoding.
+inference_nj=1       # The number of parallel jobs in decoding.
 gpu_inference=false  # Whether to perform gpu decoding.
 dumpdir=dump         # Directory to dump features.
 expdir=exp           # Directory to save experiments.
@@ -60,7 +60,7 @@ min_wav_duration=0.1 # Minimum duration in second.
 max_wav_duration=20  # Maximum duration in second.
 
 # Tokenization related
-token_type=bpe      # Tokenization type (char or bpe).
+token_type=char      # Tokenization type (char or bpe).
 nbpe=30             # The number of BPE vocabulary.
 bpemode=unigram     # Mode of BPE (unigram or bpe).
 oov="<unk>"         # Out of vocabulary symbol.
@@ -126,7 +126,7 @@ nll_batch_size=100 # Affect GPU memory usage when computing nll
                    # during nbest rescoring
 k2_config=./conf/decode_asr_transformer_with_k2.yaml
 
-use_streaming=false # Whether to use streaming decoding
+use_streaming=true # Whether to use streaming decoding
 
 use_maskctc=false # Whether to use maskctc decoding
 
@@ -157,7 +157,7 @@ nlsyms_txt=none  # Non-linguistic symbol list if existing.
 cleaner=none     # Text cleaner.
 hyp_cleaner=none # Text cleaner for hypotheses (may be used with external tokenizers)
 g2p=none         # g2p method (needed if token_type=phn).
-lang=noinfo      # The language type of corpus.
+lang=vi      # The language type of corpus.
 score_opts=                # The options given to sclite scoring
 local_score_opts=          # The options given to local/score.sh.
 asr_speech_fold_length=800 # fold_length for speech data during ASR training.
@@ -1583,10 +1583,11 @@ if [ ${stage} -le 12 ] && [ ${stop_stage} -ge 12 ] && ! [[ " ${skip_stages} " =~
                 --asr_train_config "${asr_exp}"/config.yaml \
                 --asr_model_file "${asr_exp}"/"${inference_asr_model}" \
                 --output_dir "${_logdir}"/output.JOB \
-                ${_opts} ${inference_args} || { cat $(grep -l -i error "${_logdir}"/asr_inference.*.log) ; exit 1; }
+                ${_opts} ${inference_args} || { cat "${_logdir}"/asr_inference.*.log; exit 1; } # sửa đây cho nó log ra hết
+                # ${_opts} ${inference_args} || { cat $(grep -l -i error "${_logdir}"/asr_inference.*.log) ; exit 1; }
 
         # 3. Calculate and report RTF based on decoding logs
-        if [ ${asr_task} == "asr" ]; then # sửa chổ này cho nó tính RTF và latency xem nha
+        if [ ${asr_task} == "asr" ] && [ -z ${inference_bin_tag} ]; then # đã tắt tính RTF sửa chổ này cho nó tính RTF và latency xem nha
             log "Calculating RTF & latency... log: '${_logdir}/calculate_rtf.log'"
             rm -f "${_logdir}"/calculate_rtf.log
             _fs=$(python3 -c "import humanfriendly as h;print(h.parse_size('${fs}'))")

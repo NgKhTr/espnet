@@ -36,10 +36,10 @@ model_conf:
 
 # minibatch related
 batch_type: folded
-batch_size: 128
+batch_size: 64 # 128 -> 64
 #valid_batch_size: 1
 # optimization related
-accum_grad: 1
+accum_grad: 1 # 1 -> 2
 grad_clip: 5
 patience: 3
 max_epoch: 20
@@ -54,7 +54,7 @@ early_stopping_criterion:
     - valid
     - acc
     - max
-keep_nbest_models: 10
+keep_nbest_models: 4
 
 # NoamLR is deprecated. Use WarmupLR.
 # The following is equivalent setting for NoamLR:

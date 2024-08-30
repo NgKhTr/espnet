@@ -16,4 +16,4 @@ best_model_criterion:
 -   - valid
     - loss
     - min
-keep_nbest_models: 1
+keep_nbest_models: 4
