@@ -27,6 +27,6 @@ fi
 
 # t o day nha
 log "stage 0: Data preparation"
-cp -r _data data
+# cp -r _data data
 
 log "Successfully finished. [elapsed=${SECONDS}s]"
